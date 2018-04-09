@@ -22,7 +22,36 @@
     </div>
 
     <script>
-        
+        var taskIdentifier = taskCounter(); //assign current task counter value to taskIdentifier to be used to uniquely identify a tasks and will be assigned to them upon creation 
+        $('#counter').text(taskIdentifier); //print the current number of tasks
+        //add click eventlistener to add button
+        $('#taskAddBtn').on('click', function(){
+            addTask($('#taskTextBox').val()); //call the addTask button and pass the taskTextBox's value
+        });
+
+        //add enter key press event to textbox to add task
+        $('#taskTextBox').on('keyup', function(event){
+            event.preventDefault();
+            if(event.keyCode == 13){ //checking if the keypressed was Enter key
+                $('#taskAddBtn').click(); // call the taskAddBtn's click event
+            }
+        });
+
+        //function to see how many tasks are in the list
+        function taskCounter(){
+            if($('#taskList').children().length != 0){
+                return $('#taskList').children().length; // the count of chilren (li) on taskList
+            }
+            else return 0;
+        }
+
+        //function to add task to the list
+        function addTask(taskName){
+            taskIdentifier++;
+            var taskUniqueId = taskName.replace(/ /g, "_") + String(taskIdentifier);
+            $('#taskList').append($('<li>').text(taskName)); //append an li to the taskList ul, use the passed taskName string as innerHTML
+            $('#counter').text(taskCounter()); //update the task counter at the end of adding new task
+        }
     </script>
 </body>
 </html>

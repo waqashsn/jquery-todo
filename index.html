@@ -48,6 +48,12 @@
             else return 0;
         }
 
+        // function to remove the task, takes in taskId
+        function removeTask(taskId){
+            $('li#'+taskId).remove(); // remove the li element of the concerned task
+            $('#counter').text(taskCounter()); // update the task counter after removing task
+        }
+
         //function to add task to the list
         function addTask(taskName){
             taskIdentifier++;
@@ -61,6 +67,9 @@
                 "id": taskUniqueId
             });
             taskCheckbox.appendTo(taskLi); // append the checkbox to li element
+            taskCheckbox.on('change', function(){
+                removeTask(this.id);
+            });
             var label = $('<label>'); // create new label element for the checkbox
             label.attr({ // assign attributes to the label element
                 "for":taskUniqueId,

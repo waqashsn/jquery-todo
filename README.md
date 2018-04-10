@@ -9,3 +9,5 @@ This is implementation of my another project [Vanilla To-do](https://github.com/
 
 #### NOTE 
 <sup><a name="usageguidelines">1</a></sup> Since the JQuery library is loaded from a CDN and is not included in the project itself, you must be connected to the internet for this app to work.
+
+The app does not have data persistence yet, so if you close your browser, your added tasks will be lost.

@@ -52,7 +52,7 @@
         function addTask(taskName){
             taskIdentifier++;
             var taskUniqueId = taskName.replace(/ /g, "_") + String(taskIdentifier);
-            var taskLi = $('<li>').attr('id', taskName); // create an li element and assign it attribute id by passing taskName
+            var taskLi = $('<li>').attr('id', taskUniqueId); // create an li element and assign it attribute id by passing taskName
             var taskCheckbox = $('<input>'); // create a new input (checkbox) element
             taskCheckbox.attr({ // assign attributes to the input element
                 "type": "checkbox",

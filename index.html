@@ -49,8 +49,26 @@
         function addTask(taskName){
             taskIdentifier++;
             var taskUniqueId = taskName.replace(/ /g, "_") + String(taskIdentifier);
-            $('#taskList').append($('<li>').text(taskName)); //append an li to the taskList ul, use the passed taskName string as innerHTML
+            var taskLi = $('<li>').attr('id', taskName); // create an li element and assign it attribute id by passing taskName
+            var taskCheckbox = $('<input>'); // create a new input (checkbox) element
+            taskCheckbox.attr({ // assign attributes to the input element
+                "type": "checkbox",
+                "name": taskUniqueId,
+                "value": taskName,
+                "id": taskUniqueId
+            });
+            taskCheckbox.appendTo(taskLi); // append the checkbox to li element
+            var label = $('<label>'); // create new label element for the checkbox
+            label.attr({ // assign attributes to the label element
+                "for":taskUniqueId,
+                "id": "labelFor" + taskUniqueId,
+                "value": taskName
+            });
+            label.text(taskName); // Add text to label element
+            label.appendTo(taskLi); // append the label to li element
+            $('#taskList').append(taskLi); //append an li to the taskList ul, use the passed taskName string as innerHTML
             $('#counter').text(taskCounter()); //update the task counter at the end of adding new task
+            
         }
     </script>
 </body>

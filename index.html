@@ -26,7 +26,10 @@
         $('#counter').text(taskIdentifier); //print the current number of tasks
         //add click eventlistener to add button
         $('#taskAddBtn').on('click', function(){
-            addTask($('#taskTextBox').val()); //call the addTask button and pass the taskTextBox's value
+            if($('#taskTextBox').val() != ""){ // check if the text box is empty
+                addTask($('#taskTextBox').val()); //call the addTask button and pass the taskTextBox's value
+            }
+            
         });
 
         //add enter key press event to textbox to add task
@@ -68,7 +71,7 @@
             label.appendTo(taskLi); // append the label to li element
             $('#taskList').append(taskLi); //append an li to the taskList ul, use the passed taskName string as innerHTML
             $('#counter').text(taskCounter()); //update the task counter at the end of adding new task
-            
+            $('#taskTextBox').val(""); // empty the text box after adding new task
         }
     </script>
 </body>
